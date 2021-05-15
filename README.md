@@ -65,7 +65,9 @@ Recomened design patten for this JOb is MVVM
 what happend in commonly. when you go to repository and make a request and some reason network get slow and you need to cancle that Job. in past it's very diffecult to do .. to do this there is lots of code and its a pain. and use of coroutine its very easy.
 
 **job.complete()** --  complete the job with return TRUE or FALSE
+
 **job.completeExceptionally()**--  complete the job with return exception 
+
 **CompletableJob**--   gives you ability to complete the job on your own terms. means you decide when the job complete and when not. you don't let the coroutine decide when the job is complete 
 
 **job.invokeOnCompletion**  -- its allow to either complete or cancel the job and update the UI accordingly once completing the job.whether the job is completed or cancel this code will be execute
