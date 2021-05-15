@@ -3,11 +3,13 @@
 
 When you use coroutine you need to do work on background thread . Thats all about Coroutine. That RXJava , AsyncTask does. Coroutine is same thing is another option for threading in Android.
 
-**Practical Example of Co-Routine
-**1> Making a request using Retrofit or Volly
+**Practical Example of Co-Routine**
+
+1> Making a request using Retrofit or Volly
 2>Accessing the internal Databse on phone ROOM,SQL
 
 **Why Use Co-Routine**
+
 Imagine you need to make a request, once you have that resukt then you need to make a another request and so on. Its a sequestial request call. To do this we have RX java , Live data . But its very messy. But with co-routine its very easy.
 
 **STEP 1:**
