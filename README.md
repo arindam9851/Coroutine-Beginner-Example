@@ -44,3 +44,5 @@ Coroutine Scope
 
 Coroutine is thread independent, means network call in one thread and get result in another thread.
 
+**Network TimeOut With Coroutine**
+instead of call launch we use **withTimeoutOrNull** then pass the timeOut
