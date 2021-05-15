@@ -16,7 +16,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         btn_click.setOnClickListener {
             CoroutineScope(IO).launch {
-                // for network time out
+                // for Network Time out
                 fakeApiRequestForTimeOut()
                 // normal network call
 //                fakeApiRequest()
