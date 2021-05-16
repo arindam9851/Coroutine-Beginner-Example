@@ -52,6 +52,10 @@ Coroutine is thread independent, means network call in one thread and get result
 instead of call launch we use **withTimeoutOrNull** then pass the timeOut
 
 
+**Async and Await**
+
+Async is same as coroutine launching the job. the main difference is await fun is wait for the complition the async job done. **if you need the result outside the coroutine then use async**
+
 **Coroutine Job**
 
 **JobActivity for coroutine job example**
