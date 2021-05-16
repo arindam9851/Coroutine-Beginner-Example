@@ -10,17 +10,21 @@ import kotlinx.coroutines.Dispatchers.Main
 class MainActivity : AppCompatActivity() {
     private val RESULT_1="Result#1"
     private val RESULT_2="Result#2"
+    private val RESULT_3="Result#3"
     private val JOB_TIMEOUT=1900L
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         btn_click.setOnClickListener {
-            CoroutineScope(IO).launch {
+            /*CoroutineScope(IO).launch {
                 // for Network Time out
                 fakeApiRequestForTimeOut()
                 // normal network call
 //                fakeApiRequest()
-            }
+            }*/
+
+            // Use of Async & await
+            fakeApiRequestWithAsyncAndAwait()
 
         }
     }
@@ -34,6 +38,22 @@ class MainActivity : AppCompatActivity() {
     private fun setNewText(input: String){
         val newText=txt_text.text.toString()+"\n$input"
         txt_text.setText(newText)
+    }
+
+    private fun fakeApiRequestWithAsyncAndAwait(){
+        CoroutineScope(IO).launch {
+            val result1= async {
+                getResult1FromApi()
+            }.await()
+
+            val result2=async {
+                getResult3FromApi(result1)
+            }.await()
+
+            setTestOnMainThread("Got $result1")
+            setTestOnMainThread("Got $result2")
+        }
+
     }
 
 
@@ -76,6 +96,16 @@ class MainActivity : AppCompatActivity() {
         logThread("getResult2FromApi")
         delay(1000)
         return RESULT_2
+    }
+
+    private suspend fun getResult3FromApi(result1 :String) :String{
+        logThread("getResult3FromApi")
+        delay(1000)
+        if(result1.equals(RESULT_1,ignoreCase = true)){
+            return RESULT_3
+
+        }
+        throw CancellationException("Result #1 was incorrent")
     }
     private fun logThread(methodName: String){
         println("debug: ${methodName}: ${Thread.currentThread().name}")
